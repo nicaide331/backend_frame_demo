@@ -1,39 +1,57 @@
-# 后端框架-demo
-
-#### 项目介绍
-{**以下是码云平台说明，您可以替换为您的项目简介**
-码云是开源中国推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
+# 微码服务端框架
+框架结构图
 
 
-#### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
+###  使用Spring Boot 项目结构描述
 
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
-
-#### 参与贡献
-
-1. Fork 本项目
-2. 新建 Feat_xxx 分支
-3. 提交代码
-4. 新建 Pull Request
-
-
-#### 码云特技
-
-1. 使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2. 码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3. 你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4. [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5. 码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6. 码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+```shell
+├──vma-boot-app-demo 对外提供接口
+    ├── java java文件
+        └── com.vma
+            └── app
+                ├── config 模块的配置
+                ├── controller 控制器,程序请求统一入口
+                ├── dto request 参数接口实体
+            └── Application.java  app启动入口
+    └── resources 配置文件资源
+        ├── config  相关配置文件
+            ├── application.yml 公共配置文件
+            ├── application-development.yml 开发环境独有配置文件
+            ├── application-production.yml 生产环境独有配置文件
+            ├── application-test.yml 测试环境独有配置文件
+        └── logback-spring.xml logback日志配置文件,指定日志滚动策略,级别等.
+├──vma-boot-service 业务处理
+    ├── java java文件
+        └── com.vma.business
+            └── dao DAO接口
+            └── domain 
+                └──bo 业务对象 用于返回给接口
+                └──vo 属性对象 用于api层传入service层
+            └── entity  与数据库对应的实体
+            └── service service接口
+                └──impl service实现类
+            └── utils 工具类
+            └── ApplicationEnvironListener.java  service事件监听器
+        └── resources 配置文件资源
+            ├── mapper  mybatis sql语句文件
+            └── application-service.yml service默认配置文件
+├──vma-boot-task 定时器模块 按需添加
+    ├── java java文件
+        └── com.vma
+            └── task
+                ├── annotion task的注解
+                ├── config 模块的配置
+                ├── controller 控制器,程序请求统一入口
+                ├── dto request 参数接口实体
+                ├── task 定时器任务
+            └── VmaTask.java  task启动入口
+        └── resources 配置文件资源
+            ├── static  前端页面样式
+            ├── templates  前端页面模板
+            ├── application.yml 公共配置文件
+            ├── application-development.yml 开发环境独有配置文件
+            ├── application-production.yml 生产环境独有配置文件
+            ├── application-test.yml 测试环境独有配置文件
+            └── logback-spring.xml logback日志配置文件,指定日志滚动策略,级别等.
+```
