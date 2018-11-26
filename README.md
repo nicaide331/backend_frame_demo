@@ -2,6 +2,24 @@
 ### 系统架构图
 ![架构图](img/系统架构.png)
 
+### 开发环境
+> JDK 1.8+   
+> IDEA开发工具  
+> Maven setting文件在项目files文件夹下
+
+### IDEA插件要求
++ Alibaba Java Coding Guidelines(阿里巴巴代码规范提示)
++ CheckStyle-IDEA(代码规范检测)
+> 每个项目都要单独设置  
+> 配置文件在项目files文件夹下
+>![checkstyle](img/checkstyle.png)
++ Lombok plugin
++ Save Actions(自动保存)
+>每个项目都要单独设置
+>![checkstyle](img/save-actions.png)
++ Free Mybatis plugin(推荐,可选)
+
+
 
 ###  使用Spring Boot 项目结构描述
 
@@ -40,15 +58,10 @@
     ├── java java文件
         └── com.vma
             └── task
-                ├── annotion task的注解
                 ├── config 模块的配置
-                ├── controller 控制器,程序请求统一入口
-                ├── dto request 参数接口实体
                 ├── task 定时器任务
             └── VmaTask.java  task启动入口
         └── resources 配置文件资源
-            ├── static  前端页面样式
-            ├── templates  前端页面模板
             ├── application.yml 公共配置文件
             ├── application-development.yml 开发环境独有配置文件
             ├── application-production.yml 生产环境独有配置文件
