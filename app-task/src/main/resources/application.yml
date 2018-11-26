@@ -1,0 +1,37 @@
+server:
+  port: 50111
+  servlet:
+    context-path: /vma-task
+spring:
+  profiles:
+    active: test
+  application:
+    name: vma-task
+#  boot:
+#    admin:
+#      client:
+#        url: http://localhost:50000/admin-client/
+#        username: admin
+#        password: 123456
+#        instance:
+#          prefer-ip: true
+#          service-url: http://localhost:50555/app-business
+#          name: app-business
+
+## actuator监控
+#management:
+#  server:
+#    # 设置监控服务端口
+#    port: 50554
+#  endpoints:
+#    # 设置端点是否可用 默认只有shutdown可用
+#    enabled-by-default: true
+#    web:
+#      # 设置是否暴露端点 默认只有health和info可见
+#      exposure:
+#        # 包括所有端点
+#        include: "*" # 注意需要添加引号
+#        # 排除端点
+#        exclude: shutdown
+
+

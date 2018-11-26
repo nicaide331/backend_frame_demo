@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vma.business.dao.DemoDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.vma.business.entity.Demo">
+        <id column="id" property="id"/>
+        <result column="other_key" property="otherKey"/>
+        <result column="other_value" property="otherValue"/>
+        <result column="other_group" property="otherGroup"/>
+        <result column="remarks" property="remarks"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, other_key, other_value, other_group, remarks
+    </sql>
+
+</mapper>
