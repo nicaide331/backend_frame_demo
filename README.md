@@ -17,8 +17,8 @@
 + Save Actions(自动保存)
 >每个项目都要单独设置
 >![checkstyle](img/save-actions.png)
-+ Free Mybatis plugin(推荐,可选)
-
++ Free Mybatis plugin(推荐)
++ JRebel(推荐,热部署)
 
 
 ###  使用Spring Boot 项目结构描述
