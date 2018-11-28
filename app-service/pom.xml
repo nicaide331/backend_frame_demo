@@ -30,13 +30,11 @@
             <artifactId>vma-redis</artifactId>
         </dependency>
 
-        <!--
         <dependency>
             <groupId>com.vma.api</groupId>
             <artifactId>vma-kafka</artifactId>
         </dependency>
-        -->
-        
+
         <dependency>
             <groupId>com.vma.api</groupId>
             <artifactId>vma-authorization</artifactId>
