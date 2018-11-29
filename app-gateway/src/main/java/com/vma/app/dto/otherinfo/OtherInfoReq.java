@@ -44,4 +44,8 @@ public class OtherInfoReq {
     private String remarks;
 
     private Date date;
+
+    private int current;
+
+    private int size;
 }

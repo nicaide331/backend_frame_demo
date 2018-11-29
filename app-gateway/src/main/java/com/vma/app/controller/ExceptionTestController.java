@@ -1,8 +1,11 @@
 package com.vma.app.controller;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.vma.app.dto.otherinfo.OtherInfoReq;
 import com.vma.assist.global.exception.BusinessException;
+import com.vma.assist.wraps.BeanWrap;
 import com.vma.assist.wraps.LogWrap;
 import com.vma.business.entity.Demo;
 import com.vma.business.service.IDemoService;
@@ -32,7 +35,12 @@ public class ExceptionTestController {
      * @return String
      */
     @GetMapping("/test")
-    public String test() {
+    public String test(OtherInfoReq otherInfoReq) {
+        Demo demo = new Demo();
+        BeanWrap.copyProperties(otherInfoReq, demo);
+        Page<Demo> page = new Page<>(otherInfoReq.getCurrent(), otherInfoReq.getSize());
+        EntityWrapper<Demo> entityWrapper = new EntityWrapper<>(demo);
+        otherInfoService.selectPage(page, entityWrapper);
         Demo otherInfo = new Demo();
         otherInfo.setOtherKey("3333");
         otherInfoService.save(otherInfo);
