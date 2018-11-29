@@ -23,7 +23,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        authorizationService.verify(request);
+        //authorizationService.verify(request);
         return true;
     }
 }

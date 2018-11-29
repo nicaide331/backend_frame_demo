@@ -1,7 +1,6 @@
 package com.vma;
 
 
-import com.vma.boost.rbac.EnableVmaBoostRbac;
 import com.vma.core.EnableVmaCore;
 import com.vma.mybatis.EnableVmaMybatis;
 import org.mybatis.spring.annotation.MapperScan;
@@ -18,10 +17,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 @EnableVmaCore
 @EnableVmaMybatis
-@EnableVmaBoostRbac
 @MapperScan("com.vma.**.dao")
-public class Application {
+public class TaskApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(TaskApplication.class, args);
     }
 }

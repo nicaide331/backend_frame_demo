@@ -44,7 +44,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
                 <configuration>
-                    <mainClass>com.vma.Application</mainClass>
+                    <mainClass>com.vma.TaskApplication</mainClass>
                 </configuration>
             </plugin>
         </plugins>

@@ -50,12 +50,6 @@
             <artifactId>vma-rate-limiter</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.vma.api</groupId>
-            <artifactId>app-boost-rbac</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-
     </dependencies>
 
 

@@ -2,7 +2,6 @@ package com.vma;
 
 
 import com.vma.assist.wraps.LogWrap;
-import com.vma.boost.rbac.EnableVmaBoostRbac;
 import com.vma.core.EnableVmaCore;
 import com.vma.mybatis.EnableVmaMybatis;
 import com.vma.redis.EnableVmaRedis;
@@ -17,7 +16,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author hhd
  */
 @SpringBootApplication
-@EnableVmaBoostRbac
 @EnableVmaCore
 @EnableVmaRedis
 @EnableVmaMybatis
