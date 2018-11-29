@@ -13,11 +13,12 @@ import java.util.Date;
 public class MyBatisHandler extends MetaObjectHandler {
 
     /**
+     * 新增的时候干点不可描述的事情
+     *
      * @param metaObject
      */
     @Override
     public void insertFill(MetaObject metaObject) {
-        //"新增的时候干点不可描述的事情"
         Object createDate = getFieldValByName("createTime", metaObject);
         if (null == createDate) {
             setFieldValByName("createTime", new Date(), metaObject);
@@ -25,10 +26,11 @@ public class MyBatisHandler extends MetaObjectHandler {
     }
 
     /**
+     * 更新的时候干点不可描述的事情
+     *
      * @param metaObject
      */
     @Override
     public void updateFill(MetaObject metaObject) {
-        //"更新的时候干点不可描述的事情"
     }
 }

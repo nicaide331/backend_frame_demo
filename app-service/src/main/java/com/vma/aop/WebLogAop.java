@@ -57,8 +57,8 @@ public class WebLogAop {
         HttpServletRequest request = RequestWrap.getRequest();
         MDC.put("requestId", String.valueOf(System.currentTimeMillis()));
         MDC.put("requestUrl", request.getRequestURI());
-        loginHandler(joinPoint);
-        permissionHandler(joinPoint);
+        //loginHandler(joinPoint);
+        //permissionHandler(joinPoint);
 
         Object[] args = joinPoint.getArgs();
         for (Object arg : args) {
@@ -72,8 +72,6 @@ public class WebLogAop {
                 LOG.error("请求参数转换json失败");
             }
         }
-        String mac = request.getHeader(Constants.MAC_KEY);
-        //UserDataUtil.updateAdmin(mac);
     }
 
     /**
@@ -97,6 +95,7 @@ public class WebLogAop {
      *
      * @param joinPoint 切点对象
      */
+    @Deprecated
     private void loginHandler(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
@@ -121,6 +120,7 @@ public class WebLogAop {
     /**
      * @param joinPoint 切点对象
      */
+    @Deprecated
     private void permissionHandler(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
