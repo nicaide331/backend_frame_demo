@@ -1,26 +1,24 @@
-package com.vma.app.dto.otherinfo;
+package com.vma.business.domain.bo.otherinfo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import java.util.Date;
-
 
 /**
  * <p>
- *
+ * 
  * </p>
  *
  * @author hhd
- * @since 2018-09-29
+ * @since 2018-11-29
  */
 @Data
-public class OtherInfoReq {
+public class OtherInfoBo  {
 
     /**
-     *
+     * 
      */
-    @ApiModelProperty()
+    @ApiModelProperty(value = "")
     private Integer id;
     /**
      * key
@@ -42,10 +40,4 @@ public class OtherInfoReq {
      */
     @ApiModelProperty(value = "备注")
     private String remarks;
-
-    private Date date;
-
-    private int current;
-
-    private int size;
 }
