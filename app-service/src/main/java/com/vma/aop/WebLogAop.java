@@ -82,12 +82,13 @@ public class WebLogAop {
     @AfterReturning(returning = "ret", pointcut = "webLog()")
     public void afterReturn(Object ret) {
         String requestId = MDC.get("requestId");
+        String interval = "";
         if (StringUtils.isNotBlank(requestId)) {
             Long startTime = Long.valueOf(requestId);
             Long endTime = System.currentTimeMillis();
-            LOG.info(requestId + "处理时间:" + (endTime - startTime) + "ms");
+            interval = "处理时间:" + (endTime - startTime) + "ms";
         }
-        LOG.info("响应数据为:" + JSON.toJSONString(ret));
+        LOG.info(interval + "   响应数据为:" + JSON.toJSONString(ret));
         MDC.clear();
     }
 
