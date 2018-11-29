@@ -4,10 +4,12 @@ import com.vma.app.dto.ReqPage;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * <p>
- *
+ * 分页集成reqpage对象
  * </p>
  *
  * @author hhd
@@ -17,9 +19,10 @@ import lombok.Data;
 public class OtherInfoDto extends ReqPage {
 
     /**
-     *
+     * 通过注解实现数据校验
      */
     @ApiModelProperty(value = "")
+    @NotNull(message = "id不能为空")
     private Integer id;
     /**
      * key

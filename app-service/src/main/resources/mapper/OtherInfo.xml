@@ -19,5 +19,10 @@
         other_info.other_group,
         other_info.remarks
     </sql>
+    <select id="getList" resultType="com.vma.business.domain.bo.otherinfo.OtherInfoBo">
+        SELECT
+        <include refid="allColumn"/>
+        FROM other_info
+    </select>
 
 </mapper>
