@@ -8,3 +8,7 @@ logging:
     sun.net.www.protocol: info
     org.apache.catalina: info
     de.codecentric.boot: info
+
+vma:
+  mybatis:
+    performance-interceptor-enable: true
