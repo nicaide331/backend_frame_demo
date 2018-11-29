@@ -4,7 +4,9 @@ package com.vma.app.controller;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.vma.app.dto.otherinfo.OtherInfoDto;
+import com.vma.assist.wraps.BeanWrap;
 import com.vma.assist.wraps.LogWrap;
+import com.vma.business.domain.vo.OtherInfoVo;
 import com.vma.business.entity.OtherInfo;
 import com.vma.business.service.IOtherInfoService;
 import io.swagger.annotations.Api;
@@ -13,6 +15,8 @@ import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 /**
  * <p>
@@ -39,7 +43,7 @@ public class OtherInfoController {
      */
     @ApiOperation(value = "获取列表", notes = "获取列表")
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public Page getPage(OtherInfoDto otherInfoDto) {
+    public Page getPage(@Valid OtherInfoDto otherInfoDto) {
         LOG.info("获取列表");
         Page<OtherInfo> page = new Page<>(otherInfoDto.getCurrent(), otherInfoDto.getSize());
         OtherInfo otherInfo = new OtherInfo();
@@ -70,6 +74,8 @@ public class OtherInfoController {
     @RequestMapping(value = "", method = RequestMethod.PUT)
     public void updateOtherInfo(@RequestBody OtherInfo otherInfo) {
         LOG.info("编辑");
+        OtherInfoVo otherInfoVo = new OtherInfoVo();
+        BeanWrap.copyProperties(otherInfo, otherInfoVo);
         otherInfoService.updateById(otherInfo);
         otherInfoService.updateAllColumnById(otherInfo);
     }
@@ -98,6 +104,7 @@ public class OtherInfoController {
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public OtherInfo getDetail(@ApiParam(required = true, name = "id", value = "系统编号") @PathVariable("id") Integer id) {
         LOG.info("获取详情");
+
         return otherInfoService.selectById(id);
     }
 
