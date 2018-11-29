@@ -58,7 +58,6 @@
     ├── java java文件
         └── com.vma
             └── task
-                ├── config 模块的配置
                 ├── timer 定时器任务
             └── VmaTask.java  task启动入口
         └── resources 配置文件资源

@@ -9,8 +9,11 @@ import javax.validation.constraints.NotNull;
 
 /**
  * <p>
- * 分页集成reqpage对象
+ * 分页继承reqpage对象  dto只用来接收参数 不能向service层传递
  * </p>
+ * <p>
+ * 对象要通过注解来校验是否合法 注解参考:https://blog.csdn.net/y550918116j/article/details/78258916
+ * 控制层要写 @Valid 注解才会生效
  *
  * @author hhd
  * @since 2018-11-29
