@@ -1,7 +1,7 @@
 package com.vma.task.timer;
 
 import cn.hutool.core.date.DateUtil;
-import com.vma.task.annotion.TaskTag;
+import com.vma.task.annotion.VmaTask;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +15,10 @@ import org.springframework.stereotype.Component;
 public class UserTask {
 
     /**
+     * 定时器任务  需要使用@VmaTask来标记
      * task
      */
-    @TaskTag(describe = "更新数据")
+    @VmaTask(describe = "更新数据")
     @Scheduled(cron = "0/5 * * * * ? ")
     public void task() {
         System.out.println("定时任务-----------:" + DateUtil.now());
