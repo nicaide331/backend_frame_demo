@@ -5,7 +5,7 @@
 ### 开发环境
 > JDK 1.8+   
 > IDEA开发工具  
-> Maven setting文件在项目files文件夹下
+> Maven setting文件在项目files文件夹下,setting-server.xml仓库地址修改为自己的
 
 ### IDEA插件要求
 + Alibaba Java Coding Guidelines(阿里巴巴代码规范提示)
