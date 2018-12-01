@@ -3,14 +3,12 @@ package com.vma.aop;
 import com.alibaba.fastjson.JSON;
 import com.vma.assist.global.exception.BadRequestException;
 import com.vma.assist.global.exception.BusinessException;
-import com.vma.assist.global.exception.HttpNotAuthException;
 import com.vma.assist.wraps.LogWrap;
 import com.vma.assist.wraps.RequestWrap;
-import com.vma.business.constants.Constants;
+import com.vma.authorization.service.IAuthorizationService;
 import com.vma.core.annotion.IgnoreLogin;
 import com.vma.core.annotion.Permission;
 import com.vma.core.annotion.PermissionEnum;
-import com.vma.utils.RedisUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -20,6 +18,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.MDC;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -40,6 +39,9 @@ import java.lang.reflect.Method;
 public class WebLogAop {
 
     private static final Logger LOG = LogWrap.getLogger(WebLogAop.class);
+
+    @Autowired
+    private IAuthorizationService authorizationService;
 
     /**
      * 拦截控制器
@@ -97,23 +99,20 @@ public class WebLogAop {
      */
     @Deprecated
     private void loginHandler(JoinPoint joinPoint) {
+        HttpServletRequest request = RequestWrap.getRequest();
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         IgnoreLogin ignoreLoginMethod = method.getAnnotation(IgnoreLogin.class);
         IgnoreLogin ignoreLoginClass = joinPoint.getTarget().getClass().getAnnotation(IgnoreLogin.class);
         if (ignoreLoginMethod != null || ignoreLoginClass != null) {
-            HttpServletRequest request = RequestWrap.getRequest();
-            String mac = request.getHeader(Constants.MAC_KEY);
-            if (StringUtils.isNotEmpty(mac)) {
-                String adminId = RedisUtil.get(mac + "_user_id");
-                if (adminId == null || "".equals(adminId)) {
-                    throw new HttpNotAuthException();
-                }
+            if (ignoreLoginMethod != null && !ignoreLoginMethod.value()) {
+                authorizationService.verify(request);
+            }
+            if (ignoreLoginClass != null && !ignoreLoginClass.value()) {
+                authorizationService.verify(request);
             }
         } else {
-            //TODO
-            System.out.println("未认证");
-            //throw new HttpNotAuthException("未认证");
+            authorizationService.verify(request);
         }
     }
 
