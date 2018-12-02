@@ -47,7 +47,7 @@ public class OtherInfoController {
      * @return
      */
     @ApiOperation(value = "获取列表", notes = "获取列表")
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @GetMapping("")
     public Page<OtherInfoBo> getPage(@Valid OtherInfoDto otherInfoDto) {
         LOG.info("获取列表");
         Page<OtherInfoBo> page = new Page<>(otherInfoDto.getCurrent(), otherInfoDto.getSize());
@@ -62,7 +62,7 @@ public class OtherInfoController {
      * @return
      */
     @ApiOperation(value = "新增", notes = "新增")
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @PostMapping("")
     @VmaLimit(name = "", key = "", period = 60, count = 60, limitType = LimitType.API)
     public void addOtherInfo(@RequestBody OtherInfo otherInfo) {
         LOG.info("新增");
@@ -81,7 +81,7 @@ public class OtherInfoController {
      * @return
      */
     @ApiOperation(value = "编辑", notes = "编辑")
-    @RequestMapping(value = "", method = RequestMethod.PUT)
+    @PutMapping("")
     public void updateOtherInfo(@RequestBody OtherInfoDto otherInfoDto) {
         LOG.info("编辑");
         OtherInfo otherInfo = new OtherInfo();
@@ -99,7 +99,7 @@ public class OtherInfoController {
      * @return
      */
     @ApiOperation(value = "删除信息", notes = "删除信息")
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping("/{id}")
     public void deleteOtherInfo(@ApiParam(required = true, name = "id", value = "系统编号") @PathVariable("id") Integer id) {
         LOG.info("删除信息");
         otherInfoService.deleteById(id);
@@ -114,7 +114,7 @@ public class OtherInfoController {
      * @return
      */
     @ApiOperation(value = "获取详情", notes = "获取详情")
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @GetMapping("/{id}")
     public OtherInfoBo getDetail(@ApiParam(required = true, name = "id", value = "系统编号") @PathVariable("id") Integer id) {
         LOG.info("获取详情");
         OtherInfoDto otherInfoDto = new OtherInfoDto();
