@@ -1,7 +1,6 @@
 package com.vma.aop;
 
 import com.alibaba.fastjson.JSON;
-import com.vma.assist.global.exception.BadRequestException;
 import com.vma.assist.global.exception.BusinessException;
 import com.vma.assist.wraps.LogWrap;
 import com.vma.assist.wraps.RequestWrap;
@@ -56,11 +55,12 @@ public class WebLogAop {
      */
     @Before("webLog()")
     public void before(JoinPoint joinPoint) {
+        loginHandler(joinPoint);
+        permissionHandler(joinPoint);
         HttpServletRequest request = RequestWrap.getRequest();
         MDC.put("requestId", String.valueOf(System.currentTimeMillis()));
         MDC.put("requestUrl", request.getRequestURI());
-        //loginHandler(joinPoint);
-        //permissionHandler(joinPoint);
+
 
         Object[] args = joinPoint.getArgs();
         for (Object arg : args) {
@@ -97,7 +97,6 @@ public class WebLogAop {
      *
      * @param joinPoint 切点对象
      */
-    @Deprecated
     private void loginHandler(JoinPoint joinPoint) {
         HttpServletRequest request = RequestWrap.getRequest();
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
@@ -119,38 +118,20 @@ public class WebLogAop {
     /**
      * @param joinPoint 切点对象
      */
-    @Deprecated
     private void permissionHandler(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         Method method = methodSignature.getMethod();
         Permission permission = method.getAnnotation(Permission.class);
         if (permission != null) {
             String[] permissionValues = permission.value();
-            if (permissionValues == null || permissionValues.length == 0) {
+            if (permissionValues.length == 0) {
                 throw new BusinessException("后端权限配置错误");
             }
             PermissionEnum permissionRelate = permission.relation();
             HttpServletRequest request = RequestWrap.getRequest();
             if (permissionRelate == PermissionEnum.AND) {
-                for (String value : permissionValues) {
-                    //TODO
-                    /*if (!UserDataUtil.isAllowedOperate(value, request)) {
-                        throw new BadRequestException();
-                    }*/
-                    System.out.println(value);
-                }
-            } else {
-                int count = 0;
-                for (String value : permissionValues) {
-                    //TODO
-                    /*if (!UserDataUtil.isAllowedOperate(value, request)) {
-                        count++;
-                    }*/
-                    System.out.println(value);
-                }
-                if (count == permissionValues.length) {
-                    throw new BadRequestException();
-                }
+                LOG.info("权限校验");
+                //TODO
             }
         }
     }
