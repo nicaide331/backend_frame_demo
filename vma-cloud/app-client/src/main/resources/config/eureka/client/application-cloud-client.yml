@@ -3,4 +3,4 @@ eureka:
     service-url:
       # TODO
       # 多服务逗号分割，之间不允许有空格
-      defaultZone: http://47.92.122.231:51001/eureka,http://47.92.168.115:51001/eureka,http://47.99.157.226:51001/eureka,http://www.chennh.com:51001/eureka
+      defaultZone: http://127.0.0.1:51001/eureka,http://127.0.0.1:51002/eureka,http://127.0.0.1:51003/eureka

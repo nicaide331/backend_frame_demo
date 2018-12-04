@@ -1,0 +1,1 @@
+nohup java -jar -Xms128m -Xmx512m app-business.jar  >> nohup.out &--eureka-config=localhost-51001.yml --server.port=51001

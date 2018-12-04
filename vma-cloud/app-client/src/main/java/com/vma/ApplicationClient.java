@@ -14,9 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @EnableVmaCloud
 @EnableVmaCloudClient
-public class Application {
+public class ApplicationClient {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ApplicationClient.class, args);
     }
 }
 

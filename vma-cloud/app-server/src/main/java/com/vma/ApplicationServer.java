@@ -23,10 +23,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.vma.**.dao")
 @EnableVmaCloud
 @EnableVmaCloudServer
-public class Application {
+public class ApplicationServer {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
-        LogWrap.getLogger(Application.class).info("app-business start completion");
+        SpringApplication.run(ApplicationServer.class, args);
+        LogWrap.getLogger(ApplicationServer.class).info("app-business start completion");
     }
 }
 
