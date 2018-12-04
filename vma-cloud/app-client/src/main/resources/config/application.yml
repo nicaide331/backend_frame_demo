@@ -1,0 +1,14 @@
+server:
+  port: 51001
+spring:
+  profiles:
+    active: development
+  application:
+    name: app-business-client
+logging:
+  level:
+    com.vma.app.cloud.ApiCloud: DEBUG
+feign:
+  # TODO
+  # feign.server-name配置为app-server的spring.application.name
+  server-name: app-business

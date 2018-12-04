@@ -1,0 +1,44 @@
+server:
+  port: 51001
+  host: 127.0.0.1
+spring:
+  profiles:
+    active: development
+  application:
+    name: app-business
+  boot:
+    admin:
+      client:
+        url: http://47.92.122.231:50000
+        username: admin
+        password: 123456
+        instance:
+          prefer-ip: true
+          service-url: http://${server.host}:${server.port}
+          name: app-business
+# actuator监控
+management:
+  client:
+    # 设置监控服务端口
+    port: 50554
+  endpoints:
+    # 设置端点是否可用 默认只有shutdown可用
+    enabled-by-default: true
+    web:
+      # 设置是否暴露端点 默认只有health和info可见
+      exposure:
+        # 包括所有端点
+        include: "*" # 注意需要添加引号
+        # 排除端点
+        exclude: shutdown
+logging:
+  level:
+    root: info
+    com.vma.app.cloud.ApiCloud: DEBUG
+custom:
+  cloud:
+    api: https://ca01.xmtryz.cn/api/
+vma:
+  cloud:
+    server:
+      csrf-ignoring-ant-matchers: /**

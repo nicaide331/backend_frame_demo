@@ -1,0 +1,10 @@
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    org.apache.tomcat: info
+    org.apache.coyote: info
+    org.apache.coyote.http11.Http11Processor: info
+    org.apache.http: info
+    sun.net.www.protocol: info
+    org.apache.catalina: info
+    de.codecentric.boot: info

@@ -24,13 +24,13 @@
 ###  使用Spring Boot 项目结构描述
 
 ```shell
-├──vma-boot-app-demo 对外提供接口
+├──app-geateway-boot 对外提供接口
     ├── java java文件
         └── com.vma
             └── app
-                ├── config 模块的配置
                 ├── controller 控制器,程序请求统一入口
                 ├── dto request 参数接口实体
+            ├── config 模块的配置
             └── Application.java  app启动入口
     └── resources 配置文件资源
         ├── config  相关配置文件
@@ -66,4 +66,56 @@
             ├── application-production.yml 生产环境独有配置文件
             ├── application-test.yml 测试环境独有配置文件
             └── logback-spring.xml logback日志配置文件,指定日志滚动策略,级别等.
+```
+
+###  使用Spring Cloud 项目结构描述
+
+```shell
+├──vma-cloud-app-client 对外提供接口
+    ├── java java文件
+        └── com.vma
+            └── app
+                ├── config 模块的配置
+                ├── controller 控制器,程序请求统一入口
+                ├── dto request 参数接口实体
+            └── Application.java  app启动入口
+    └── resources 配置文件资源
+        ├── eureka.client  发现服务配置文件
+            ├── application-cloud-client.yml 发现服务配置
+        ├── config  相关配置文件
+            ├── application.yml 公共配置文件
+            ├── application-development.yml 开发环境独有配置文件
+            ├── application-production.yml 生产环境独有配置文件
+            ├── application-test.yml 测试环境独有配置文件
+        └── logback-spring.xml logback日志配置文件,指定日志滚动策略,级别等.
+├──vma-cloud-app-demo 提供消费服务
+    ├── java java文件
+        └── com.vma
+            └── app
+                ├── config 模块的配置
+                ├── controller 控制器,程序请求统一入口
+                ├── dto request 参数接口实体
+            └── Application.java  app启动入口
+    └── resources 配置文件资源
+        ├── config  相关配置文件
+            ├── application.yml 公共配置文件
+            ├── application-development.yml 开发环境独有配置文件
+            ├── application-production.yml 生产环境独有配置文件
+            ├── application-test.yml 测试环境独有配置文件
+        └── logback-spring.xml logback日志配置文件,指定日志滚动策略,级别等.
+├──vma-cloud-service 业务处理
+    ├── java java文件
+        └── com.vma.business
+            └── dao DAO接口
+            └── domain 
+                └──bo 业务对象 用于返回给接口
+                └──vo 属性对象 用于api层传入service层
+            └── entity  与数据库对应的实体
+            └── service service接口
+                └──impl service实现类
+            └── utils 工具类
+            └── ApplicationEnvironListener.java  service事件监听器
+        └── resources 配置文件资源
+            ├── mapper  mybatis sql语句文件
+            └── application-service.yml service默认配置文件
 ```

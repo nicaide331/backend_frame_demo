@@ -1,0 +1,1 @@
+org.springframework.boot.SpringApplicationRunListener=com.vma.config.ApplicationEnvironListener

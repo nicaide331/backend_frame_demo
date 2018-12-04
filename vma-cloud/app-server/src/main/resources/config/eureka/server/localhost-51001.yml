@@ -1,0 +1,6 @@
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    service-url:
+      defaultZone: http://admin:vma123456@peer2:51002/eureka/,http://admin:vma123456@peer3:51003/eureka/

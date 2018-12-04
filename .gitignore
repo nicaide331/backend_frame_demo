@@ -1,2 +1,10 @@
 .idea/
 *.iml
+logs/
+vma-boot/app-gateway/target/
+vma-boot/app-service/target/
+vma-boot/app-task/
+vma-cloud/app-client/target/
+vma-cloud/app-server/target/
+vma-cloud/app-service/target/
+vma-cloud/target/

@@ -1,0 +1,9 @@
+eureka:
+  instance:
+      hostname: vmakj115
+  client:
+    service-url:
+      defaultZone: http://admin:vma123456@vmakj231:51001/eureka,http://admin:vma123456@vmakj226:51001/eureka,http://admin:vma123456@www.chennh.com:51001/eureka
+
+server:
+  host: 47.92.168.115
