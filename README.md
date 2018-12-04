@@ -11,8 +11,10 @@
 + Alibaba Java Coding Guidelines(阿里巴巴代码规范提示)
 + CheckStyle-IDEA(代码规范检测)
 > 每个项目都要单独设置  
-> 配置文件在项目files文件夹下
->![checkstyle](img/checkstyle.png)
+> 远程checkstyle文件地址: https://gitee.com/vmakj/checkstyle-java/raw/master/style.xml
+>![checkstyle](img/checkstyle.png)  
+> 提示出现中文乱码的解决方法:  
+>> 在IDEA程序目录的bin文件夹下  idea64.exe.vmoptions或idea.properties(32位)用文本打开在末尾添加 -Duser.language=zh 重启IDEA生效
 + Lombok plugin
 + Save Actions(自动保存)
 >每个项目都要单独设置
