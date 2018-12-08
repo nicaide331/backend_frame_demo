@@ -16,9 +16,11 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +35,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/app/v1.0/otherInfo")
 @Api(value = "OtherInfoController", description = "相关", tags = {"OtherInfoController"})
+@Validated
 public class OtherInfoController {
     private static final Logger LOG = LogWrap.getLogger(OtherInfoController.class);
 
@@ -109,13 +112,14 @@ public class OtherInfoController {
     /**
      * 获取详情
      * 通过dto接受参数 返回bo
-     *
+     *  使用PathVariable 获取参数 并且校验 需要再该类上添加@Validated 注解 才会生效
      * @param id
      * @return
      */
     @ApiOperation(value = "获取详情", notes = "获取详情")
     @GetMapping("/{id}")
-    public OtherInfoBo getDetail(@ApiParam(required = true, name = "id", value = "系统编号") @PathVariable("id") Integer id) {
+    public OtherInfoBo getDetail(@Min(5)
+                                 @ApiParam(required = true, name = "id", value = "系统编号") @PathVariable("id") Integer id) {
         LOG.info("获取详情");
         OtherInfoDto otherInfoDto = new OtherInfoDto();
         OtherInfoVo otherInfoVo = new OtherInfoVo();
